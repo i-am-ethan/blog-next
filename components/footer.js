@@ -1,5 +1,8 @@
+import Logo from "./logo"
 export default function Footer(){
   return(
-    <footer>FOOTER</footer>
+    <footer>
+      <Logo />
+    </footer>
   )
 }
