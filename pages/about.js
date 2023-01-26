@@ -2,6 +2,9 @@ import Hero from "@/components/hero"
 
 export default function About() {
   return (
-      <Hero />
+    <Hero
+    title="ABOUT"
+    subtitle="ABOUTページ"
+     />
   )
 }
