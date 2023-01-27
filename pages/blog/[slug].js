@@ -1,4 +1,4 @@
-import { getPostBySlug } from "@/lib/api"
+import { getPostBySlug, getALLSlugs } from "@/lib/api"
 import Container from "@/components/container"
 import PostHeader from "@/components/post-header"
 import PostBody from "@/components/post-body"
@@ -11,7 +11,7 @@ import Image from "next/image"
 import { getPlaiceholder } from "plaiceholder"
 import { eyecatchLocal } from "@/lib/constants"
 
-export default function Schedule({
+export default function Post({
   title, publish, content, eyecatch, categories,description
 }){
   return(
@@ -55,8 +55,17 @@ export default function Schedule({
   )
 }
 
-export async function getStaticProps(){
-  const slug = 'schedule'
+export async function getStaticPaths(){
+  const allSlugs = await getALLSlugs()
+  return{
+    paths: allSlugs.map(({slug})=>(`/blog/${slug}`)),
+    // paths: ['/blog/schedule', '/blog/music', '/blog/micro'],
+    fallback: false,
+  }
+}
+
+export async function getStaticProps(context){
+  const slug = context.params.slug
   const post = await getPostBySlug(slug)
   const description = extractText(post.content)
   const eyecatch = post.eyecatch ?? eyecatchLocal
