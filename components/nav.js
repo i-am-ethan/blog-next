@@ -7,17 +7,17 @@ export default function Nav(){
       <ul className={styles.list}>
         <li>
           <Link href="/">
-            Home
+            <a>Home</a>
           </Link>
         </li>
         <li>
           <Link href="/about">
-            About
+            <a>About</a>
           </Link>
         </li>
         <li>
           <Link href="/blog">
-            Blog
+            <a>Blog</a>
           </Link>
         </li>
       </ul>
