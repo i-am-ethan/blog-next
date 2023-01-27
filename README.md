@@ -43,3 +43,21 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 <a href="https://pixabay.com/ja/users/marioschmidtphoto-2995231/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1562251">Mario Schmidt</a>による<a href="https://pixabay.com/ja//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1562251">Pixabay</a>からの画像
 
 <a href="https://pixabay.com/ja/users/bkd-1006949/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1630451">Bettina Nørgaard</a>による<a href="https://pixabay.com/ja//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1630451">Pixabay</a>からの画像
+
+## SGとSSR(静的生成とサーバーサイドレンダリング)
+Next.jsでは、外部データを必要としないページはビルドの際にHTMLが生成される。
+
+外部データを必要とするページはデータを取得した上でプリレンダリングが行われれますが、
+データを取得するタイミングの異なるSGとSSRをページ単位で選択することができます。
+
+### SG(Static Generation:静的生成)
+・ビルド時に必要なデータを取得しページをプリレンダリングする
+・ページがリクエストされたときには、プリレンダリングしてあるものを返すだけなので速い
+・データの更新はできない
+・ビルド時にページを生成するため、ビルドに時間がかかる
+
+### SSR(Server-side Rendering:サーバーサイドレンダリング)
+・ページがリクエストされた際にデータを取得し、それをもとにページをプリレンダリング。HTML&JSONができたらそれを返す
+・常に最新のデータでページが構成される
+・ビルド時間は必要ない
+・リクエストを受けてから全ての処理が行われるため、SGより遅い
